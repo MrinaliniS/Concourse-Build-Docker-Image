@@ -5,7 +5,7 @@
 # http://docs.docker.io/en/latest/use/builder/
 
 FROM ubuntu:xenial
-MAINTAINER Dave Beckett <dave@dajobe.org>
+MAINTAINER Debarati Sinha Roy <debarati.sinharoy@gmail.com>
 
 COPY *.sh /build/
 
