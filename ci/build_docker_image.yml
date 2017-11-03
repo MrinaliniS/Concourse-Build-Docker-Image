@@ -1,0 +1,92 @@
+
+resources:
+- name: git-concourse-build-docker-image
+  type: git
+  source:
+    uri: https://github.com/debi123/Concourse-Build-Docker-Image
+# - name: trigger-every-1-minutes
+#   type: time
+#   source: {interval: 1m}
+
+- name: docker-image
+  type: docker-image
+  source:
+    email: debarati.sinharoy@gmail.com
+    username: debrooy
+    password: Victory#123
+    repository: docker-create-concourse-hbase-image
+
+
+
+jobs:
+- name: build-docker-image
+  plan:
+  - get: git-concourse-build-docker-image
+  # - get: trigger-every-1-minutes
+    trigger: true
+  - put: docker-image
+    params:
+      build: git-concourse-build-docker-image/ci
+  # - task: deploy-to-docker
+  #   config:
+  #     platform: linux
+  #     inputs:
+  #     - name: git-rsrc
+  #     outputs:
+  #     - name: gpdb-unit-test-output
+  #     image_resource:
+  #       type: docker-image
+  #       source:
+  #         repository: everpeace/hbase-standalone
+  #         #tag: "14.04"
+  #     run:
+  #       path: sh
+  #       args:
+  #       - -exc
+  #       - |
+  #         cd git-rsrc/table_scripts
+  #         chmod 777 run1.sh
+  #         ./run1.sh
+  #         ls
+
+
+
+    # on_success:
+    #  task: deploy-to-server
+    #  config:
+    #    platform: linux
+    #    inputs:
+    #    - name: git-rsrc
+    #    outputs:
+    #    - name: gpdb-unit-test-output
+    #    image_resource:
+    #      type: docker-image
+    #      source:
+    #        repository: alpine
+    #        #tag: "14.04"
+    #    run:
+    #      path: sh
+    #      args:
+    #      - -exc
+    #      - |
+    #        cd git-rsrc/table_scripts
+    #        chmod 777 gpsql.sh
+    #        ./gpsql.sh
+    #
+    #
+    # on_failure:
+    #  task: oops
+    #  config:
+    #    platform: linux
+    #    inputs:
+    #    - name: gpdb-unit-test-output
+    #    outputs:
+    #    - name: gpdb-unit-test-output1
+    #    image_resource:
+    #      type: docker-image
+    #      source:
+    #        repository: circleci/postgres
+    #        #tag: "14.04"
+    #    run:
+    #      path: echo
+    #      args: ["The code is not pushed to the destination server as unit test has failed"]
