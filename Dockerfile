@@ -4,7 +4,7 @@
 
 # http://docs.docker.io/en/latest/use/builder/
 
-FROM ubuntu
+FROM rastasheep/ubuntu-sshd
 MAINTAINER Debarati Sinha Roy <debarati.sinharoy@gmail.com>
 
 COPY *.sh /build/
