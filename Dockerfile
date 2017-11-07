@@ -4,7 +4,7 @@
 
 # http://docs.docker.io/en/latest/use/builder/
 
-FROM alpine
+FROM ubuntu
 MAINTAINER Debarati Sinha Roy <debarati.sinharoy@gmail.com>
 
 COPY *.sh /build/
