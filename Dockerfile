@@ -4,7 +4,8 @@
 
 # http://docs.docker.io/en/latest/use/builder/
 
-FROM rastasheep/ubuntu-sshd
+# FROM rastasheep/ubuntu-sshd
+FROM gettyimages/spark
 MAINTAINER Debarati Sinha Roy <debarati.sinharoy@gmail.com>
 
 COPY *.sh /build/
