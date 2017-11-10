@@ -8,9 +8,9 @@ resources:
 - name: docker-image
   type: docker-image
   source:
-    email: shirimrinalini@gmail.com
-    username: shru
-    password: shru12#
+    email: ###
+    username: ##
+    password: ###
     repository: shru/docker-spark-hbase
 
 jobs:
