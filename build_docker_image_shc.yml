@@ -1,0 +1,23 @@
+
+resources:
+- name: git-concourse-build-docker-image
+  type: git
+  source:
+    uri: https://github.com/MrinaliniS/Concourse-Build-Docker-Image
+
+- name: docker-image
+  type: docker-image
+  source:
+    email: shirimrinalini@gmail.com
+    username: shru
+    password: shru12#
+    repository: shru/docker-spark-hbase
+
+jobs:
+- name: build-docker-image
+  plan:
+  - get: git-concourse-build-docker-image
+    trigger: true
+  - put: docker-image
+    params:
+      build: git-concourse-build-docker-image
