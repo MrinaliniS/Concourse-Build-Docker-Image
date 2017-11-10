@@ -6,7 +6,7 @@
 
 # FROM rastasheep/ubuntu-sshd
 FROM gettyimages/spark
-MAINTAINER Debarati Sinha Roy <debarati.sinharoy@gmail.com>
+MAINTAINER Shruthi Shiri <shirimrinalini@gmail.com>
 
 COPY *.sh /build/
 
